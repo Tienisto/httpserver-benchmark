@@ -1,0 +1,9 @@
+name: benchmark
+description: A sample command-line application.
+version: 1.0.0
+
+environment:
+  sdk: ^3.0.0
+
+dependencies:
+  basic_utils: ^5.7.0
