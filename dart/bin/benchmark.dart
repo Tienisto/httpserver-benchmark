@@ -28,21 +28,8 @@ Future<HttpServer> createServer({required bool secure}) {
 }
 
 SecurityContext generateSecurityContext() {
-  final keyPair = CryptoUtils.generateRSAKeyPair();
-  final privateKey = keyPair.privateKey as RSAPrivateKey;
-  final publicKey = keyPair.publicKey as RSAPublicKey;
-  final dn = {
-    'CN': 'Test',
-    'O': '',
-    'OU': '',
-    'L': '',
-    'S': '',
-    'C': '',
-  };
-  final csr = X509Utils.generateRsaCsrPem(dn, privateKey, publicKey);
-  final certificate = X509Utils.generateSelfSignedCertificate(keyPair.privateKey, csr, 365 * 10);
-
+  final privateKey = CryptoUtils.rsaPrivateKeyFromPem(File('../cert/privateKey.pem').readAsStringSync());
   return SecurityContext()
     ..usePrivateKeyBytes(CryptoUtils.encodeRSAPrivateKeyToPemPkcs1(privateKey).codeUnits)
-    ..useCertificateChainBytes(certificate.codeUnits);
+    ..useCertificateChainBytes(File('../cert/cert.pem').readAsBytesSync());
 }

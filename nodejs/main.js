@@ -5,8 +5,8 @@ const fs = require('fs');
 const PORT = 3000;
 const HOST = '0.0.0.0';
 
-const privateKey = fs.readFileSync('privateKey.pem', 'utf8');
-const certificate = fs.readFileSync('cert.pem', 'utf8');
+const privateKey = fs.readFileSync('../cert/privateKey.pem', 'utf8');
+const certificate = fs.readFileSync('../cert/cert.pem', 'utf8');
 
 const credentials = { key: privateKey, cert: certificate };
 
