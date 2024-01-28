@@ -4,6 +4,8 @@ This repo tests the performance between Dart and Node.js when uploading large bi
 
 The motivation is to investigate the poor performance of Dart when processing large binary data via HTTPS.
 
+Tracking issue: https://github.com/dart-lang/sdk/issues/54752
+
 ## HTTP result
 
 | Client  | Server  | Speed (more is better) | Factor |
